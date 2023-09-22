@@ -1,0 +1,94 @@
+https://zenn.dev/ampersand/articles/9b1623e5860b57
+
+// import {
+//   Injectable,
+//   LoggerService as LoggerServiceOrigin,
+// } from '@nestjs/common';
+// import { TransformableInfo } from 'logform';
+// import { createLogger, format, Logger, transports } from 'winston';
+// import * as DailyRotateFile from 'winston-daily-rotate-file';
+
+// type LogLevel = 'debug' | 'info' | 'warn' | 'error' | 'verbose';
+
+// interface ILog {
+//   url: string;
+//   method: string; // http method
+//   uid?: string;
+//   message: string;
+// }
+
+// @Injectable()
+// export class LoggerService implements LoggerServiceOrigin {
+//   logger: Logger;
+//   private readonly dateFormat = 'YYYY-MM-DD';
+//   private readonly dirName = '.log';
+
+//   private createLogTransport(
+//     level: LogLevel,
+//     filename: string,
+//   ): DailyRotateFile {
+//     return new DailyRotateFile({
+//       level: level,
+//       datePattern: this.dateFormat,
+//       filename: `${filename}-%DATE%.log`,
+//       dirname: this.dirName,
+//       maxSize: '20m',
+//       maxFiles: '32d',
+//     });
+//   }
+
+//   private readonly loggerFormat = format.combine(
+//     format.timestamp({ format: `${this.dateFormat} HH:mm:ss` }),
+//     format.errors({ stack: true }),
+//     format.printf(
+//       (info: TransformableInfo) =>
+//         `"${info.timestamp}", "${info.level}", "${info.url}"," ${info.method}", "${info.uid}", "${info.message}"`,
+//     ),
+//   );
+
+//   private readonly createDevelopTransport = new transports.Console({
+//     level: 'debug',
+//     format: format.combine(format.colorize(), format.simple()),
+//   });
+
+//   private readonly createLog = (logLevel: LogLevel, props: ILog) => {
+//     return this.logger.log({
+//       level: logLevel,
+//       url: props.url,
+//       method: props.method,
+//       uid: props.uid ? props.uid : 'anonymous',
+//       message: props.message,
+//     });
+//   };
+
+//   constructor() {
+//     this.logger = createLogger({
+//       format: this.loggerFormat,
+//       transports: [
+//         this.createLogTransport('debug', 'application'),
+//         this.createLogTransport('error', 'error'),
+//       ],
+//     });
+
+//     // if (process.env.NODE_ENV !== 'production')
+//     this.logger.add(this.createDevelopTransport);
+
+//     // this.logger = logger;
+//   }
+
+//   public log(props: ILog) {
+//     this.createLog('info', props);
+//   }
+//   public error(props: ILog) {
+//     this.createLog('error', props);
+//   }
+//   public warn(props: ILog) {
+//     this.createLog('warn', props);
+//   }
+//   public debug(props: ILog) {
+//     this.createLog('debug', props);
+//   }
+//   public verbose(props: ILog) {
+//     this.createLog('verbose', props);
+//   }
+// }

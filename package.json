@@ -1,0 +1,20 @@
+{
+  "name": "turbo-test",
+  "version": "0.0.0",
+  "packageManager": "yarn@1.22.19",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel --no-daemon",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.0.3",
+    "turbo": "latest"
+  }
+}
