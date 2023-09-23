@@ -21,10 +21,7 @@ import { AuthzModule } from './authz/authz.module';
   //インスタンス化して、Controllerが何かを定義している
   controllers: [AppController],
   //インスタンス化して、このModule内で使用する可能性のあるproviderを定義している
-  providers: [
-    AppService,
-    { provide: APP_INTERCEPTOR, useClass: LoggerInterceptor },
-  ],
+  providers: [AppService, { provide: APP_INTERCEPTOR, useClass: LoggerInterceptor }],
   //他のModuleで使いたいProviderを定義する
   // exports: ,
 })

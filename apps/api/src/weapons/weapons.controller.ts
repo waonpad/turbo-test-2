@@ -29,7 +29,10 @@ export class WeaponsController {
 
   @UseGuards(AuthGuard('jwt')) // 認証を試してみる
   @Get('danger')
-  getHello(@Request() req) {
+  getHello(
+    @Request()
+    req
+  ) {
     console.log(req.user);
 
     return req.user;
@@ -42,8 +45,15 @@ export class WeaponsController {
   }
 
   @Get(':id')
-  @ApiParam({ name: 'id', type: Number, example: 1 }) // exampleをつけないとdreddに怒られた
-  async getWeapon(@Param('id') id: string): Promise<Weapon> {
+  @ApiParam({
+    name: 'id',
+    type: Number,
+    example: 1,
+  }) // exampleをつけないとdreddに怒られた
+  async getWeapon(
+    @Param('id')
+    id: string
+  ): Promise<Weapon> {
     return this.weaponsService.getWeapon(+id);
   }
 
@@ -62,22 +72,38 @@ export class WeaponsController {
 
   // DTOを使う場合
   @Post()
-  async create(@Body() createWeaponDto: CreateWeaponDto): Promise<Weapon> {
+  async create(
+    @Body()
+    createWeaponDto: CreateWeaponDto
+  ): Promise<Weapon> {
     return this.weaponsService.createWeapon(createWeaponDto);
   }
 
   @Put(':id')
-  @ApiParam({ name: 'id', type: Number, example: 1 })
+  @ApiParam({
+    name: 'id',
+    type: Number,
+    example: 1,
+  })
   async update(
-    @Param('id') id: string,
-    @Body() updateWeaponDto: UpdateWeaponDto,
+    @Param('id')
+    id: string,
+    @Body()
+    updateWeaponDto: UpdateWeaponDto
   ): Promise<Weapon> {
     return this.weaponsService.updateWeapon(+id, updateWeaponDto);
   }
 
   @Delete(':id')
-  @ApiParam({ name: 'id', type: Number, example: 1 })
-  async delete(@Param('id') id: string): Promise<Weapon> {
+  @ApiParam({
+    name: 'id',
+    type: Number,
+    example: 1,
+  })
+  async delete(
+    @Param('id')
+    id: string
+  ): Promise<Weapon> {
     return this.weaponsService.deleteWeapon(+id);
   }
 }

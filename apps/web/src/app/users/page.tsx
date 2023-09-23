@@ -1,12 +1,12 @@
-import UserList from "./UserList";
+import UserList from './UserList';
 
 // ビルド通すため必要
-export const dynamic = "force-dynamic";
+export const dynamic = 'force-dynamic';
 
 // メタデータをここでも設定できる
 export const metadata = {
-  title: "ユーザの一覧ページ",
-  description: "JSONPlaceHolderから取得したユーザ一覧です。",
+  title: 'ユーザの一覧ページ',
+  description: 'JSONPlaceHolderから取得したユーザ一覧です。',
 };
 
 const Page = async () => {

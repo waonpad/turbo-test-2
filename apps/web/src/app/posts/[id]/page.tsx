@@ -1,5 +1,4 @@
-import { Post } from "@prisma/client";
-import { getPost } from "../_/api/getPost";
+import { getPost } from '../_/api/getPost';
 
 // テスト用コンポーネント
 

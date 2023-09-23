@@ -2,15 +2,15 @@
 // robots.txtで角煮できる
 // robots.txtでも作成できるが、これなら動的に作成できる
 
-import { MetadataRoute } from "next";
+import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
-      userAgent: "*",
-      allow: "/",
-      disallow: "/private/",
+      userAgent: '*',
+      allow: '/',
+      disallow: '/private/',
     },
-    sitemap: "http://localhost:3000/sitemap.xml",
+    sitemap: 'http://localhost:3000/sitemap.xml',
   };
 }

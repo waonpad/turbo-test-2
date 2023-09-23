@@ -1,18 +1,55 @@
 module.exports = {
-  extends: ["next", "turbo", "prettier"],
+  extends: ["plugin:@typescript-eslint/recommended", "next", "turbo", "prettier"],
+  plugins: ["unused-imports"],
   settings: {
     next: {
       rootDir: ["apps/*/", "packages/*/"],
     },
   },
-  rules: {
-    "@next/next/no-html-link-for-pages": "off",
-    "turbo/no-undeclared-env-vars": "off", // process.env.なんとか を許可する
-  },
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     babelOptions: {
       presets: [require.resolve("next/babel")],
     },
+  },
+  ignorePatterns: [
+    "node_modules/",
+    ".next/",
+    "out/",
+    "public/",
+    ".prettierrc.js",
+    ".eslintrc.js",
+    "tailwind.config.js",
+    "next.config.js",
+    "postcss.config.js",
+    "jest.config.js",
+  ],
+  rules: {
+    "@next/next/no-html-link-for-pages": "off",
+    "turbo/no-undeclared-env-vars": "off", // process.env.なんとか を許可する
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "@typescript-eslint/no-unsafe-call": "error",
+    "@typescript-eslint/no-unsafe-member-access": "error",
+    "@typescript-eslint/no-unsafe-return": "error",
+    "unused-imports/no-unused-imports-ts": "error",
+    "import/order": [
+      "error",
+      {
+        groups: ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
+        pathGroups: [
+          {
+            pattern: "{react,react-dom/**,react-router-dom}",
+            group: "builtin",
+            position: "before",
+          },
+        ],
+        pathGroupsExcludedImportTypes: ["builtin"],
+        alphabetize: {
+          order: "asc",
+        },
+      },
+    ],
   },
 };
 

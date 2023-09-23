@@ -15,8 +15,7 @@ async function bootstrap() {
 
   app.enableCors({
     origin: '*',
-    allowedHeaders:
-      'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+    allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization',
   }); // CORSを有効化
 
   // (2) DocumentBuilderでSwaggerのAPIドキュメントの設定を行う

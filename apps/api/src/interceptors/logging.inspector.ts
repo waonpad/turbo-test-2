@@ -1,9 +1,4 @@
-import {
-  CallHandler,
-  ExecutionContext,
-  Injectable,
-  NestInterceptor,
-} from '@nestjs/common';
+import { CallHandler, ExecutionContext, Injectable, NestInterceptor } from '@nestjs/common';
 import { Request } from 'express';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 import { LoggerService } from 'src/logger/logger.service';
@@ -12,7 +7,7 @@ import { LoggerService } from 'src/logger/logger.service';
 export class LoggerInterceptor implements NestInterceptor {
   constructor(
     private readonly accessLogger: LoggerService,
-    private readonly errorLogger: LoggerService,
+    private readonly errorLogger: LoggerService
   ) {}
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     const request = context.switchToHttp().getRequest<Request>();
@@ -30,14 +25,9 @@ export class LoggerInterceptor implements NestInterceptor {
       .pipe(
         catchError((err) => {
           // Exceptionのログを出力したい場合はここで実装;
-          this.errorLogger.error(
-            err.message,
-            err,
-            'LoggerInterceptor',
-            'intercept',
-          );
+          this.errorLogger.error(err.message, err, 'LoggerInterceptor', 'intercept');
           return throwError(() => new Error(err));
-        }),
+        })
       )
       .pipe(tap());
   }

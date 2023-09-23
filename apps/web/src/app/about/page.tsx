@@ -2,7 +2,7 @@
 /* マウスカーソルを載せるだけで勝手に遷移先のjsが読み込まれる */
 /* これを回避したいならprefetch={false}を指定する */
 
-import Link from "next/link";
+import Link from 'next/link';
 
 const Page = () => {
   return (

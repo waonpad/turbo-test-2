@@ -8,9 +8,9 @@ export const errors: Record<
   }
 > = {
   VALIDATION: {
-    code: "VALIDATION",
-    name: "Validation Error",
-    message: "Validation Error",
+    code: 'VALIDATION',
+    name: 'Validation Error',
+    message: 'Validation Error',
     status: 422,
   },
 };

@@ -1,4 +1,4 @@
-import { HOST_URL } from "@/constants";
+import { HOST_URL } from '@/constants';
 
 export const host = (path: string) => {
   return `${HOST_URL}${path}`;
