@@ -1,12 +1,12 @@
-const path = require("path");
+const path = require('path');
 
-const apiPath = path.resolve(__dirname, "apps/api");
-const webPath = path.resolve(__dirname, "apps/web");
+const apiPath = path.resolve(__dirname, 'apps/api');
+const webPath = path.resolve(__dirname, 'apps/web');
 
-const ciApiPath = path.resolve(__dirname, "out/apps/api");
-const ciWebPath = path.resolve(__dirname, "out/apps/web");
+const ciApiPath = path.resolve(__dirname, 'out/apps/api');
+const ciWebPath = path.resolve(__dirname, 'out/apps/web');
 
-const databasePath = path.resolve(__dirname, "packages/database");
+const databasePath = path.resolve(__dirname, 'packages/database');
 
 // 事前にグローバルインストール
 // npm install -g nps dredd
@@ -18,7 +18,7 @@ module.exports = {
       env: {
         default: `node ${path.resolve(
           __dirname,
-          "tool/copy-env.js" // .envファイルをコピーする自作スクリプト
+          'tool/copy-env.js' // .envファイルをコピーする自作スクリプト
         )} --dir ./apps/* ./packages/*`, // 対象ディレクトリ
       },
       dependencies: `yarn install && npx turbo prune`,
@@ -53,12 +53,15 @@ module.exports = {
       },
     },
     build: {
-      default: "npx turbo run build",
+      default: 'npx turbo run build',
       ci: {
-        web: "cd out && npm run build",
-        api: "cd out && npm run build",
+        web: 'cd out && npm run build',
+        api: 'cd out && npm run build',
       },
     },
-    dev: "npx turbo run dev",
+    lint: {
+      style: `yarn stylelint "**/*.{css,scss}"`,
+    },
+    dev: 'npx turbo run dev',
   },
 };
