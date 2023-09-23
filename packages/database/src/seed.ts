@@ -1,13 +1,11 @@
-import { prisma } from "./index";
+import { prisma } from './index';
 
 async function main() {
   // Fetch all users
   const allUsers = await prisma.user.findMany();
 
   if (allUsers.length === 0) {
-    console.log(
-      "No users found. Please make sure you have at least one user in the database."
-    );
+    console.log('No users found. Please make sure you have at least one user in the database.');
     return;
   }
 

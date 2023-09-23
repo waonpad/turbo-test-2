@@ -24,22 +24,22 @@
 //   );
 // }
 
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Unstable_Grid2";
-import Drawer from "@mui/material/Drawer";
-import Typography from "@mui/material/Typography";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import Alert from "@mui/material/Alert";
-import AlertTitle from "@mui/material/AlertTitle";
-import { MediaCard } from "@/components/elements";
+import * as React from 'react';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Unstable_Grid2';
+import { MediaCard } from '@/components/elements';
 
 export default function HomePage() {
   return (
     <Box
       sx={{
-        display: "flex",
+        display: 'flex',
       }}
     >
       <Box>
@@ -80,11 +80,11 @@ export default function HomePage() {
         sx={{
           width: 320,
           flexShrink: 0,
-          "& .MuiDrawer-paper": {
+          '& .MuiDrawer-paper': {
             width: 320,
-            boxSizing: "border-box",
-            top: ["48px", "56px", "64px"],
-            height: "auto",
+            boxSizing: 'border-box',
+            top: ['48px', '56px', '64px'],
+            height: 'auto',
             bottom: 0,
           },
         }}

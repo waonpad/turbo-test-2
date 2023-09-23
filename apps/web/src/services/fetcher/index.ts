@@ -1,12 +1,12 @@
-import { ZodObject } from "zod";
-import { Err, ErrResponse, HttpResponse } from "./types";
-import { errors } from "@/errors";
-import { ZodError } from "zod";
+// import { ZodObject } from "zod";
+import { ZodError } from 'zod';
+import { errors } from '@/errors';
+import { HttpResponse } from './types';
 
 export function fetcher<T>(
   input: RequestInfo,
-  init?: RequestInit,
-  validationSchema?: ZodObject<any>
+  init?: RequestInit
+  // validationSchema?: ZodObject<any> // API Routesの方でバリデーションしている。外部APIならここでもいいかも
 ) {
   // APIエンドポイントにアクセスする前に事前にバリデーションをして、負荷を減らす設計
   // これは工数が増えるので後からやる
@@ -23,7 +23,7 @@ export function fetcher<T>(
     .then(transformResponse<T>())
     .catch((err) => {
       // ネットワークエラーと、transformResponseでのエラーを一まとめにして投げる
-      console.log("fetcher: err", err);
+      console.log('fetcher: err', err);
       throw err;
     });
 }
@@ -41,7 +41,7 @@ export function transformResponse<T>() {
         const response: HttpResponse<T> = {
           data: null,
           err: {
-            ...errors["VALIDATION"],
+            ...errors['VALIDATION'],
             errors: json.err.issues.map((issue) => ({
               code: issue.code,
               name: `${issue.path[0]}`,
@@ -51,19 +51,19 @@ export function transformResponse<T>() {
           status: res.status,
         };
 
-        console.log("=================================-");
-        console.log("バリデーションエラーを受け取った！", response);
-        console.log("=================================-");
+        console.log('=================================-');
+        console.log('バリデーションエラーを受け取った！', response);
+        console.log('=================================-');
 
         return response;
       }
 
-      console.error("transformResponse Error:", res);
+      console.error('transformResponse Error:', res);
 
       throw res.statusText;
     }
     const json = await res.json();
-    console.log("transformResponse Success:", res, json);
+    console.log('transformResponse Success:', res, json);
 
     return {
       data: json,

@@ -2,14 +2,14 @@
 // sitemap.xmlで確認できる
 // sitemap.xmlでも作成できるが、これなら動的に作成できる
 
-import { MetadataRoute } from "next";
+import { MetadataRoute } from 'next';
 
 type User = {
   id: string;
 };
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const response = await fetch("https://jsonplaceholder.typicode.com/users");
+  const response = await fetch('https://jsonplaceholder.typicode.com/users');
   const users: User[] = await response.json();
 
   const usersUrl = users.map((user) => {
@@ -21,11 +21,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     {
-      url: "http://localhost:3000",
+      url: 'http://localhost:3000',
       lastModified: new Date(),
     },
     {
-      url: "http://localhost:3000/users",
+      url: 'http://localhost:3000/users',
       lastModified: new Date(),
     },
     ...usersUrl,

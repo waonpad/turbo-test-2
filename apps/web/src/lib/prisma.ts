@@ -19,6 +19,6 @@
 
 // // https://www.prisma.io/docs/guides/other/troubleshooting-orm/help-articles/nextjs-prisma-client-dev-practices
 
-import { prisma } from "database";
+import { prisma } from 'database';
 
 export default prisma;

@@ -1,24 +1,18 @@
-import type { Metadata } from "next";
-import { type User } from "@/app/types";
+import { type User } from '@/app/types';
+import type { Metadata } from 'next';
 
 async function getUser(id: string) {
-  const response = await fetch(
-    `https://jsonplaceholder.typicode.com/users/${id}`
-  );
+  const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
   return response.json();
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { id: string };
-}): Promise<Metadata> {
-  const user = await getUser(params.id);
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+  const user: User = await getUser(params.id);
   return { title: user.name };
 }
 
 export async function generateStaticParams() {
-  const response = await fetch("https://jsonplaceholder.typicode.com/users");
+  const response = await fetch('https://jsonplaceholder.typicode.com/users');
   const users: User[] = await response.json();
 
   // 静的なhtmlを作成するために、idの配列を返す

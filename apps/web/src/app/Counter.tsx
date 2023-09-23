@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 // reactのフックを使ったりして、クライアント側で状態が変わるコンポーネントを使う時は
 // use clientを先頭につける必要がある
@@ -27,7 +27,7 @@
 
 // export default Counter;
 
-import { useCounter } from "./context/CounterProvider";
+import { useCounter } from './context/CounterProvider';
 
 const Counter = ({ children }: { children: React.ReactNode }) => {
   const [count, setCount] = useCounter();
@@ -37,10 +37,7 @@ const Counter = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <div>Count: {count}</div>
-      <button
-        onClick={increment}
-        className="px-2 py-1 rounded-lg bg-blue-600 text-white"
-      >
+      <button onClick={increment} className="px-2 py-1 rounded-lg bg-blue-600 text-white">
         Increment
       </button>
       {children}

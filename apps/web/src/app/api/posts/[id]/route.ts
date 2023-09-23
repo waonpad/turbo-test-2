@@ -1,13 +1,13 @@
-import { NextResponse } from "next/server";
-import prisma from "@/lib/prisma";
-import { z, ZodSchema, ZodError } from "zod";
+import { NextResponse } from 'next/server';
+import { z, ZodError } from 'zod';
+import prisma from '@/lib/prisma';
 
 export async function GET(
   request: Request,
   // { params }: { params: { id: number } } // paramsはstring型になっている
   { params }: { params: { id: string } }
 ) {
-  console.log("GET", params);
+  console.log('GET', params);
 
   const validationSchema = z.object({
     // id: z.number(),
@@ -22,7 +22,7 @@ export async function GET(
     }
   } catch (err) {
     if (err instanceof ZodError) {
-      console.log("バリデーションエラー", err);
+      console.log('バリデーションエラー', err);
 
       // return transformValidationErrors(err);
 

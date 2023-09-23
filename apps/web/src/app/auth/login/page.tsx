@@ -1,10 +1,9 @@
-"use client";
+'use client';
 // useSessionを使う場合必要
 
-import { nextAuthOptions } from "@/config/next-auth";
-import { LoginButton } from "../_/components/LoginButton";
-import { LogoutButton } from "../_/components/LogoutButton";
-import { getServerSession } from "next-auth/next";
+import { useSession } from 'next-auth/react';
+import { LoginButton } from '../_/components/LoginButton';
+import { LogoutButton } from '../_/components/LogoutButton';
 
 // export default async function Page() {
 //   return (
@@ -47,14 +46,12 @@ import { getServerSession } from "next-auth/next";
 //   );
 // }
 
-import { useSession } from "next-auth/react";
-
 // クライアントコンポーネントでのログイン状態の取得
 export default function ClientPage() {
   const {
     data: session,
-    status,
-    update,
+    // status,
+    // update,
   } = useSession({
     required: true, // SSRやCSRで有効
     onUnauthenticated: () => {
@@ -68,10 +65,10 @@ export default function ClientPage() {
   return (
     <main
       style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "70vh",
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '70vh',
       }}
     >
       <div>

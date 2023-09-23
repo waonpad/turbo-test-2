@@ -1,7 +1,4 @@
-import {
-  Injectable,
-  LoggerService as LoggerServiceOrigin,
-} from '@nestjs/common';
+import { Injectable, LoggerService as LoggerServiceOrigin } from '@nestjs/common';
 import { Env } from 'src/config/environments/env.service';
 import { createLogger, format, Logger, transports } from 'winston';
 import DailyRotateFile from 'winston-daily-rotate-file';
@@ -35,7 +32,7 @@ export class LoggerService implements LoggerServiceOrigin {
         format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
         format.errors({ stack: true }), // errorログではstackを表示
         format.splat(),
-        format.json(),
+        format.json()
       ),
       defaultMeta: { service: 'logging', funcName: '' }, // デフォルトの出力項目を指定
       transports: [applicationLogTransport, errorLogTransport],
@@ -48,7 +45,7 @@ export class LoggerService implements LoggerServiceOrigin {
         new transports.Console({
           level: 'debug',
           format: format.combine(format.colorize(), format.simple()),
-        }),
+        })
       );
     }
   }

@@ -1,9 +1,9 @@
-import type { NextAuthOptions } from "next-auth";
-import GitHubProvider from "next-auth/providers/github";
-import GoogleProvider from "next-auth/providers/google";
-import CredentialsProvider from "next-auth/providers/credentials";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import prisma from "@/lib/prisma";
+import { PrismaAdapter } from '@next-auth/prisma-adapter';
+import GitHubProvider from 'next-auth/providers/github';
+import GoogleProvider from 'next-auth/providers/google';
+import prisma from '@/lib/prisma';
+import type { NextAuthOptions } from 'next-auth';
+// import type { User } from "@/app/types";
 
 export const nextAuthOptions: NextAuthOptions = {
   debug: true,
@@ -20,14 +20,15 @@ export const nextAuthOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    jwt: async ({ token, user, account, profile, isNewUser }) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    jwt: async ({ token, user, account, profile, trigger }) => {
       // 注意: トークンをログ出力してはダメです。
-      console.log("in jwt", { user, token, account, profile });
+      console.log('in jwt', { user, token, account, profile });
 
       if (user) {
         token.user = user;
-        const u = user as any;
-        token.role = u.role;
+        // const u = user as User;
+        // token.role = u.role;
       }
       if (account) {
         token.accessToken = account.access_token;
