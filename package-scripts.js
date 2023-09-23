@@ -16,13 +16,10 @@ module.exports = {
     prepare: {
       default: `nps prepare.env preapre.dependencies prepare.packages prepare.apps`,
       env: {
-        default: `nps prepare.env.root prepare.env.packages prepare.env.apps`,
-        root: `copy .env.local.example .env.local`,
-        packages: `nps prepare.env.database`,
-        database: `cd ${databasePath} && copy .env.example .env`,
-        apps: `nps prepare.env.web prepare.env.api`,
-        web: `cd ${webPath} && copy .env.example .env`,
-        api: `cd ${apiPath} && copy .env.example .env`,
+        default: `node ${path.resolve(
+          __dirname,
+          "tool/copy-env.js" // .envファイルをコピーする自作スクリプト
+        )} --dir ./apps/* ./packages/*`, // 対象ディレクトリ
       },
       dependencies: `yarn install && npx turbo prune`,
       packages: `nps prepare.database`,
