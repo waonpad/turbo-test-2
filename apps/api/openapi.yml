@@ -7,15 +7,13 @@ paths:
       responses:
         '200':
           description: ''
-  /weapons/danger:
+  /danger:
     get:
-      operationId: WeaponsController_getHello
+      operationId: AppController_getDanger
       parameters: []
       responses:
         '200':
           description: ''
-      tags: &ref_0
-        - weapons
   /weapons:
     get:
       operationId: WeaponsController_getAllWeapons
@@ -23,7 +21,8 @@ paths:
       responses:
         '200':
           description: ''
-      tags: *ref_0
+      tags: &ref_0
+        - weapons
     post:
       operationId: WeaponsController_create
       parameters: []

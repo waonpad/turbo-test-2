@@ -35,6 +35,10 @@ export class EnvValidator {
   @IsNotEmpty()
   @IsString()
   AUTH0_CLIENT_SECRET: string;
+
+  @IsNotEmpty()
+  @IsString()
+  NEXTAUTH_SECRET: string;
 }
 
 /**

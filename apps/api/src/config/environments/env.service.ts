@@ -39,4 +39,8 @@ export class Env {
   get Auth0ClientSecret(): string {
     return this.configService.get('AUTH0_CLIENT_SECRET');
   }
+
+  get NextAuthSecret(): string {
+    return this.configService.get('NEXTAUTH_SECRET');
+  }
 }
