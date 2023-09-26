@@ -1,9 +1,9 @@
-import { Post } from 'database';
+import { Weapon } from 'database';
 import { fetcher } from '@/services/fetcher';
 import { frontApi } from '@/utils/url';
 
-export function getPosts() {
-  return fetcher<Post[]>(frontApi('posts'), {
+export function getWeapons() {
+  return fetcher<Weapon[]>(frontApi('weapons'), {
     cache: 'no-cache',
   });
 }

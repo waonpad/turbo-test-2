@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { hostApi } from '@/utils/url';
+import { frontApi } from '@/utils/url';
 
 export default function AddPost() {
   const router = useRouter();
@@ -11,7 +11,7 @@ export default function AddPost() {
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
 
-    await fetch(hostApi('posts'), {
+    await fetch(frontApi('posts'), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ export default function AddPost() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col space-y-4 mt-8">
+    <form onSubmit={handleSubmit} className="mt-8 flex flex-col space-y-4">
       <div>
         <label htmlFor="title">title:</label>
         <input
@@ -47,7 +47,7 @@ export default function AddPost() {
         />
       </div>
       <div>
-        <button type="submit" className="px-2 py-1 bg-blue-500 text-white rounded-lg">
+        <button type="submit" className="rounded-lg bg-blue-500 px-2 py-1 text-white">
           Submit
         </button>
       </div>

@@ -7,7 +7,8 @@ import type { NextAuthOptions } from 'next-auth';
 
 export const nextAuthOptions: NextAuthOptions = {
   debug: true,
-  // session: { strategy: "jwt" }, // adapterを使用する場合はstrategyがdatabaseになる
+  // jwtにするの、必須
+  session: { strategy: 'jwt' }, // adapterを使用する場合はstrategyがdatabaseになるが、明示的に指定すると強制できる
   adapter: PrismaAdapter(prisma),
   providers: [
     GitHubProvider({
@@ -47,10 +48,19 @@ export const nextAuthOptions: NextAuthOptions = {
     //   };
     // },
 
-    session: async ({ session, user }) => {
-      if (session.user) {
-        session.user.id = user.id; // `User`テーブルのフィールド値を取得できる
-      }
+    // session: async ({ session, user }) => {
+    session: async ({ session, token }) => {
+      // これではダメだった
+      // if (session.user) {
+      //   session.user.id = user.id; // `User`テーブルのフィールド値を取得できる
+      // }
+      // return session;
+
+      // こう
+      // Send properties to the client, like an access_token and user id from a provider.
+      token.accessToken = token.accessToken;
+      session!.user!.id = token.id;
+
       return session;
     },
   },
