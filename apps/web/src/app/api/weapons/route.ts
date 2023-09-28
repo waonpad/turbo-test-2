@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
+import { resolveResponseInit } from '@/utils/response';
 import { backApi } from '@/utils/url';
 
 export async function GET(req: NextRequest) {
@@ -23,9 +24,7 @@ export async function GET(req: NextRequest) {
 
   // 中継点が型を知らないのめんどくさそう
   // 他プロパティも返したい場合は？？？
-  return NextResponse.json(resJson, {
-    status: res.status, // バックエンドのステータスコードをそのまま返す
-  });
+  return NextResponse.json(resJson, resolveResponseInit(res));
 
   // return NextResponse.json(res.data);
 }
@@ -45,7 +44,5 @@ export async function POST(req: NextRequest) {
 
   const resJson = await res.json();
 
-  return NextResponse.json(resJson, {
-    status: res.status,
-  });
+  return NextResponse.json(resJson, resolveResponseInit(res));
 }

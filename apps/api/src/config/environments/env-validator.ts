@@ -8,6 +8,11 @@ enum AppEnvEnum {
   Test = 'test',
 }
 
+enum HostEnum {
+  Localhost = 'localhost',
+  All = '0.0.0.0',
+}
+
 /**
  * ①
  * バリデーションしたい環境変数がある場合はここに記載してください。
@@ -17,6 +22,10 @@ export class EnvValidator {
   @IsEnum(AppEnvEnum)
   APP_ENV: AppEnvEnum;
 
+  @IsEnum(HostEnum)
+  Host: HostEnum;
+
+  @IsEnum(HostEnum)
   @IsNumber()
   PORT: number;
 
