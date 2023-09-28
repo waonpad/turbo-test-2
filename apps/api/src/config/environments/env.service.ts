@@ -20,6 +20,10 @@ export class Env {
     return this.configService.get('APP_ENV');
   }
 
+  get Host(): string {
+    return this.configService.get('HOST');
+  }
+
   get Port(): number {
     return this.configService.get('PORT');
   }

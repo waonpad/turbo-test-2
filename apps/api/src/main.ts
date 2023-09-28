@@ -41,6 +41,6 @@ async function bootstrap() {
   writeFileSync(openApiOutputPath, dump(document, {}));
 
   // (5) NestJSアプリケーションを指定したポートで起動する。ここでは3000
-  await app.listen(env.Port);
+  await app.listen(env.Port, env.Host);
 }
 bootstrap();

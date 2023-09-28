@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
+import { resolveResponseInit } from '@/utils/response';
 import { backApi } from '@/utils/url';
 
 export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
@@ -14,9 +15,7 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
 
   const resJson = await res.json();
 
-  return NextResponse.json(resJson, {
-    status: res.status,
-  });
+  return NextResponse.json(resJson, resolveResponseInit(res));
 }
 
 export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
@@ -34,9 +33,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
 
   const resJson = await res.json();
 
-  return NextResponse.json(resJson, {
-    status: res.status,
-  });
+  return NextResponse.json(resJson, resolveResponseInit(res));
 }
 
 export async function DELETE(req: NextRequest, { params }: { params: { id: string } }) {
@@ -51,7 +48,5 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
 
   const resJson = await res.json();
 
-  return NextResponse.json(resJson, {
-    status: res.status,
-  });
+  return NextResponse.json(resJson, resolveResponseInit(res));
 }
