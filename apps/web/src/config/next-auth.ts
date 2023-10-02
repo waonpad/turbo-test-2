@@ -24,7 +24,7 @@ export const nextAuthOptions: NextAuthOptions = {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     jwt: async ({ token, user, account, profile, trigger }) => {
       // 注意: トークンをログ出力してはダメです。
-      console.log('in jwt', { user, token, account, profile });
+      // console.log('in jwt', { user, token, account, profile });
 
       if (user) {
         token.user = user;
@@ -58,8 +58,7 @@ export const nextAuthOptions: NextAuthOptions = {
 
       // こう
       // Send properties to the client, like an access_token and user id from a provider.
-      token.accessToken = token.accessToken;
-      session!.user!.id = token.id;
+      session!.user!.token = token;
 
       return session;
     },

@@ -29,6 +29,11 @@ module.exports = {
     'next.config.js',
     'postcss.config.js',
     'jest.config.js',
+    // 怒られたのでテストファイルは無視する
+    '**/*.test.ts',
+    '**/*.test.tsx',
+    '**/*.spec.ts',
+    '**/*.spec.tsx',
   ],
   rules: {
     '@next/next/no-html-link-for-pages': 'off',
