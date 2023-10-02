@@ -7,8 +7,8 @@ import {
   Param,
   Post,
   Put,
+  Req,
   UseGuards,
-  // Request,
 } from '@nestjs/common';
 import { WeaponsService } from './weapons.service';
 import { CreateWeaponDto } from './dto/create-weapon.dto';
@@ -16,7 +16,9 @@ import { UpdateWeaponDto } from './dto/update-weapon.dto';
 import { ApiParam, ApiTags } from '@nestjs/swagger';
 import { Weapon } from '@prisma/client';
 import { NextAuthGuard } from 'src/next-auth/next-auth.guard';
-import { CustomRequest } from 'src/common/requests/custom-request';
+import { Request } from 'express';
+import { User } from 'src/user/user.decorator';
+import { AuthUser } from 'src/user/auth-user';
 
 // typeormだとInsertResultとかを扱うらしい
 // https://zenn.dev/engineerhikaru/books/0a615c1248a2ea/viewer/6746bf
@@ -31,6 +33,7 @@ export class WeaponsController {
 
   @Get()
   @HttpCode(200)
+  @UseGuards(NextAuthGuard)
   // @Api〇〇() でswagger用のタグをいろいろつけられる
   async getAllWeapons(): Promise<Weapon[]> {
     return this.weaponsService.getAllWeapons();
@@ -49,28 +52,18 @@ export class WeaponsController {
     return this.weaponsService.getWeapon(+id);
   }
 
-  // DTOを使わない場合
-  // @Post()
-  // createWeapon(
-  //   @Body()
-  //   weaponData: {
-  //     name: string;
-  //     attackPower: number;
-  //     attribute: string;
-  //   },
-  // ) {
-  //   return this.weaponsService.createWeapon(weaponData);
-  // }
-
-  // DTOを使う場合
   @UseGuards(NextAuthGuard)
   @Post()
   async create(
     @Body()
     createWeaponDto: CreateWeaponDto,
-    request: CustomRequest // NextAuthで認証したユーザー情報を取得する
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    @Req() request: Request, // NextAuthで認証したユーザー情報を取得する
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    @User() user: AuthUser
   ): Promise<Weapon> {
-    console.log(request);
+    // console.log(request);
+    // console.log(user);
 
     return this.weaponsService.createWeapon(createWeaponDto);
   }

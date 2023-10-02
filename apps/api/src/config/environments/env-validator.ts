@@ -23,9 +23,8 @@ export class EnvValidator {
   APP_ENV: AppEnvEnum;
 
   @IsEnum(HostEnum)
-  Host: HostEnum;
+  HOST: HostEnum;
 
-  @IsEnum(HostEnum)
   @IsNumber()
   PORT: number;
 

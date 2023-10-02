@@ -38,6 +38,7 @@ export async function POST(req: NextRequest) {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(reqJson), // JSON.stringifyしないとバックエンドで受け取れない
   });

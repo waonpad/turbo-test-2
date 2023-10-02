@@ -63,7 +63,7 @@ export function transformResponse<T>() {
       throw res.statusText;
     }
     const json = await res.json();
-    console.log('transformResponse Success:', res, json);
+    // console.log('transformResponse Success:', res, json);
 
     return {
       data: json,
