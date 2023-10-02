@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 // import { InjectRepository } from '@nestjs/typeorm';
 // import { PrismaClient, Weapon } from '@prisma/client';
-import { Weapon } from '@prisma/client';
+import { Weapon } from 'database';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateWeaponDto } from './dto/create-weapon.dto';
 import { UpdateWeaponDto } from './dto/update-weapon.dto';

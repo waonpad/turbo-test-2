@@ -14,7 +14,7 @@ import { WeaponsService } from './weapons.service';
 import { CreateWeaponDto } from './dto/create-weapon.dto';
 import { UpdateWeaponDto } from './dto/update-weapon.dto';
 import { ApiParam, ApiTags } from '@nestjs/swagger';
-import { Weapon } from '@prisma/client';
+import { Weapon } from 'database';
 import { NextAuthGuard } from 'src/next-auth/next-auth.guard';
 import { Request } from 'express';
 import { User } from 'src/user/user.decorator';
