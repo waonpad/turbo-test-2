@@ -17,6 +17,12 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+env:
+  # 環境変数を使うにはここで設定する
+  # https://docs.github.com/ja/actions/learn-github-actions/variables
+  NEST_API_URL: http://localhost:3000/
+  NEXT_PUBLIC_HOST_URL: http://localhost:8080/
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -49,7 +55,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - run: yarn global add turbo
-      - run: npx nps prepare.ci.web
       - run: npx nps prepare.ci.database # 追加
-      - run: npx nps build.ci.web
+      - run: npx nps prepare.ci.web
+      - run: npx nps build.ci.web # databaseも勝手にbuildされる
       - run: npx nps test.ci.web
