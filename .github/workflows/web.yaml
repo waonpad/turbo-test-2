@@ -55,7 +55,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - run: yarn global add turbo
-      - run: npx nps prepare.ci.database # 追加
+      # - run: npx nps prepare.ci.database # 追加 # 一回消してみる
       - run: npx nps prepare.ci.web
       - run: npx nps build.ci.web # databaseも勝手にbuildされる
       - run: npx nps test.ci.web
