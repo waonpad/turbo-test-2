@@ -17,6 +17,7 @@ export default withAuth(
       // 認可に関する処理。ロールが `admin` ならOK
       authorized: ({ token }) => {
         console.log('Logged by middleware.ts / in authorized: ', token);
+        
         // return token?.role === "admin";
         // if (token) return true; // デフォ
         // else return false;
