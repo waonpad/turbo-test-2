@@ -31,7 +31,13 @@ module.exports = {
       },
     },
   },
-  ignorePatterns: ['node_modules/', 'dist/', '.eslintrc.js', '**/turbo/generators/config.ts'],
+  ignorePatterns: [
+    'node_modules/',
+    'dist/',
+    '.eslintrc.js',
+    '**/turbo/generators/config.ts',
+    'lint-staged.config.js',
+  ],
 
   rules: {
     // add specific rules configurations here
