@@ -1,4 +1,4 @@
-import ThemeProvider from '@/providers/ThemeProvider';
+// import ThemeProvider from '@/providers/ThemeProvider';
 import { NextAuthProvider } from './NextAuthProvider';
 
 type AppProviderProps = {
@@ -7,10 +7,12 @@ type AppProviderProps = {
 
 export default function AppProvider({ children }: AppProviderProps) {
   return (
-    <ThemeProvider>
+    <>
+      {/* <ThemeProvider> */}
       {/* <QueryProvider> */}
       <NextAuthProvider>{children}</NextAuthProvider>
       {/* </QueryProvider> */}
-    </ThemeProvider>
+      {/* </ThemeProvider> */}
+    </>
   );
 }

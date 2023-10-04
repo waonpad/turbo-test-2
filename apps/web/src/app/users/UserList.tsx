@@ -6,7 +6,7 @@ const UserList = async () => {
   // const response = await fetch("https://jsonplaceholder.typicode.com/user");
   // const response = await fetch("https://jsonplaceholder.typicode.com/users");
   // const response = await fetch("http://localhost:3000/api");
-  const response = await fetch('http://localhost:3000/api?name=John', {
+  const response = await fetch('http://localhost:8080/api?name=John', {
     // cacheしない設定
     // cacheされているかどうかは、ログのHIT/MISSで確認できる
     // cache: "no-store",

@@ -60,16 +60,19 @@ export default function ClientPage() {
       // loggerやクライアントでの特別な処理をしたいときに有効
     },
   });
+
   const user = session?.user;
 
   return (
     <main
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '70vh',
-      }}
+      // style={{
+      //   display: 'flex',
+      //   justifyContent: 'center',
+      //   alignItems: 'center',
+      //   height: '70vh',
+      // }}
+      // muiを使わなくしたので上のをtailwindcssで書き換え
+      className="flex h-3/4 items-center justify-center"
     >
       <div>
         <div>{`${JSON.stringify(user)}`}</div>
