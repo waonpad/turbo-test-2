@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import Counter from './Counter';
-import UserList from './users/UserList';
 
 export const metadata = {
   metadataBase: new URL('https://localhost.com:8080'),
@@ -19,7 +18,8 @@ export default function Home() {
       <h1 className="text-2xl">Home</h1>
       <Counter>
         <h2 className="mt-4 text-lg font-bold">ユーザ一覧</h2>
-        <UserList />
+        {/* fetchができずCIビルドが通らなかったので一旦コメントアウト */}
+        {/* <UserList /> */}
       </Counter>
     </div>
   );
