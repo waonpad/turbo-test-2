@@ -1,10 +1,9 @@
 import Link from 'next/link';
-import { Button } from 'ui';
 import Counter from './Counter';
 import UserList from './users/UserList';
 
 export const metadata = {
-  metadataBase: new URL('https://localhost.com:3000'),
+  metadataBase: new URL('https://localhost.com:8080'),
   alternates: {
     canonical: '/',
   },
@@ -13,7 +12,7 @@ export const metadata = {
 export default function Home() {
   return (
     <div className="m-4">
-      <Button />
+      {/* <Button /> */}
       <Link href="/about" className="underline">
         About
       </Link>

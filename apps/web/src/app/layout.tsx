@@ -8,6 +8,7 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 import { CounterProvider } from '@/context/CounterProvider';
+import AppProvider from '@/providers/app';
 
 // フォントの設定
 const intr = Inter({ subsets: ['latin'] });
@@ -28,7 +29,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={intr.className}>
-        <CounterProvider>{children}</CounterProvider>
+        <AppProvider>
+          <CounterProvider>{children}</CounterProvider>
+        </AppProvider>
       </body>
     </html>
   );
