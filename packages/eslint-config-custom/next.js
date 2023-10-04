@@ -29,6 +29,7 @@ module.exports = {
     'next.config.js',
     'postcss.config.js',
     'jest.config.js',
+    'lint-staged.config.js',
     // 怒られたのでテストファイルは無視する
     '**/*.test.ts',
     '**/*.test.tsx',
