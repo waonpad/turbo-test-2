@@ -12,7 +12,7 @@
     "dev": "nps dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "prepare": "husky install"
+    "prepare": "echo Please husky install"
   },
   "devDependencies": {
     "husky": "^8.0.0",
