@@ -1,8 +1,8 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { updateWeapon } from '../api/updateWeapon';
-import type { UpdateWeapoForm } from '../api/updateWeapon';
+import { updateWeapon } from '../api/update-weapon';
+import type { UpdateWeapoForm } from '../api/update-weapon';
 import type { Weapon } from 'database';
 
 export function UpdateWeapon(weapon: Weapon) {

@@ -1,4 +1,4 @@
-import { serverEnv } from '../../constants/serverEnv.mjs';
+import { serverEnv } from '../../constants';
 
 export const backApi = {
   nest: (path: string) => {

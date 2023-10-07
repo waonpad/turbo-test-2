@@ -1,5 +1,5 @@
-import { CreateWeapon } from './_/components/CreateWeapon';
-import { WeaponList } from './_/components/WeaponList';
+import { CreateWeapon } from './_/components/create-weapon';
+import { WeaponList } from './_/components/weapon-list';
 
 export const dynamic = 'force-dynamic';
 

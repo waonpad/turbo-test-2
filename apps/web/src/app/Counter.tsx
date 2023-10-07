@@ -27,7 +27,7 @@
 
 // export default Counter;
 
-import { useCounter } from '@/context/CounterProvider';
+import { useCounter } from '@/context/counter-provider';
 
 const Counter = ({ children }: { children: React.ReactNode }) => {
   const [count, setCount] = useCounter();

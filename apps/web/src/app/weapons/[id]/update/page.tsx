@@ -1,5 +1,5 @@
-import { getWeapon } from '../../_/api/getWeapon';
-import { UpdateWeapon } from '../../_/components/UpdateWeapon';
+import { getWeapon } from '../../_/api/get-weapon';
+import { UpdateWeapon } from '../../_/components/update-weapon';
 
 export default async function Page({ params }: { params: { id: string } }) {
   const { data: weapon } = await getWeapon(Number(params.id));

@@ -1,4 +1,4 @@
-import UserList from './UserList';
+import UserList from './user-list';
 
 // ビルド通すため必要
 export const dynamic = 'force-dynamic';

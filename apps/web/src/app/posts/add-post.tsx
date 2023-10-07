@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { hostApi } from '@/utils/url/hostApi';
+import { hostApi } from '@/utils/url/host-api';
 
 export default function AddPost() {
   const router = useRouter();
