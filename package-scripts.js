@@ -79,5 +79,11 @@ module.exports = {
       },
     },
     dev: 'docker compose up -d && npx turbo run dev --parallel --no-daemon',
+    g: {
+      a: `node ${path.resolve(
+        __dirname,
+        'tool/easy-git-add.js' // git addを簡単にする自作スクリプト
+      )}`,
+    },
   },
 };
