@@ -28,9 +28,9 @@ export class EnvValidator {
   @IsNumber()
   PORT: number;
 
-  // @IsNotEmpty()
-  // @IsString()
-  // DATABASE_URL: string;
+  @IsNotEmpty()
+  @IsString()
+  DATABASE_URL: string;
 
   @IsNotEmpty()
   @IsString()
