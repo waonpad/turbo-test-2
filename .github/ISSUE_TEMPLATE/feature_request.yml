@@ -44,9 +44,10 @@ body:
       required: false
 
   - type: input
-    id: screenshotsattributes:
-    label: スクリーンショットやモックアップ
-    placeholder: 画像のURLやモックアップのリンクを記入してください。
+    id: screenshots
+    attributes:
+      label: スクリーンショットやモックアップ
+      placeholder: 画像のURLやモックアップのリンクを記入してください。
     validations:
       required: false
   - type: textarea
