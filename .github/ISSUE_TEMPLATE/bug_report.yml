@@ -47,7 +47,7 @@ template:
     id: environment-info
     attributes:
       label: 環境情報
-      description: `npx envinfo --system --binaries --browsers`の結果を貼り付けてください。
+      description: `npx envinfo --system --binaries --browsers`の結果を貼り付けてください。`
     validations:
       required: true
 
