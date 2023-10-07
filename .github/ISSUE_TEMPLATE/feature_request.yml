@@ -1,6 +1,7 @@
-name: 機能リクエスト
+name: Feature Request
 description: 新しい機能や改善を提案する際に使用してください。
 title: "[Feature Request]: "
+labels: ["enhancement"]
 body:
   - type: markdown
     attributes:
