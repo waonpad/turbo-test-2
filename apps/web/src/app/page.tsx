@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Button } from 'ui';
 import Counter from './Counter';
 
 export const metadata = {
@@ -11,7 +12,7 @@ export const metadata = {
 export default function Home() {
   return (
     <div className="m-4">
-      {/* <Button /> */}
+      <Button />
       <Link href="/about" className="underline">
         About
       </Link>
