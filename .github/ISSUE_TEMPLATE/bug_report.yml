@@ -2,7 +2,7 @@ name: バグ報告
 description: 新しいバグを報告する際に使用してください。
 title: "[Bug]: "
 labels: ["bug"]
-template:
+body:
   - type: markdown
     attributes:
       value: "### Issueの作成前に、既存のIssuesを確認してください"
