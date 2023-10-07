@@ -9,7 +9,7 @@ const ciWebPath = path.resolve(__dirname, 'out/apps/web');
 const databasePath = path.resolve(__dirname, 'packages/database');
 
 // 事前にグローバルインストール
-// npm install -g nps dredd
+// npm install -g nps dredd git-cz
 
 module.exports = {
   scripts: {
