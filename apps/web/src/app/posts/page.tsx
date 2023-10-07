@@ -1,6 +1,6 @@
-import AddPost from './AddPost';
+import AddPost from './add-post';
 // import TanstackPostList from "./TanstackPostList";
-import PostList from './PostList';
+import PostList from './post-list';
 
 // tanstack-queryを使ったらこれが無くてもビルドが通るようになった
 export const dynamic = 'force-dynamic';

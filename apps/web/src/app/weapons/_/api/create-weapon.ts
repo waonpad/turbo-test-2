@@ -1,6 +1,6 @@
 import { Weapon } from 'database';
 import { fetcher } from '@/services/fetcher';
-import { hostApi } from '@/utils/url/hostApi';
+import { hostApi } from '@/utils/url/host-api';
 
 export type CreateWeapoForm = Omit<Weapon, 'id'>;
 

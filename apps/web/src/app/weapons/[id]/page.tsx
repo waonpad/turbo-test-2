@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { getWeapon } from '../_/api/getWeapon';
-import { DeleteWeapon } from '../_/components/DeleteWeapon';
+import { getWeapon } from '../_/api/get-weapon';
+import { DeleteWeapon } from '../_/components/delete-weapon';
 
 // テスト用コンポーネント
 

@@ -2,8 +2,8 @@
 // useSessionを使う場合必要
 
 import { useSession } from 'next-auth/react';
-import { LoginButton } from '../_/components/LoginButton';
-import { LogoutButton } from '../_/components/LogoutButton';
+import { LoginButton } from '../_/components/login-button';
+import { LogoutButton } from '../_/components/logout-button';
 
 // export default async function Page() {
 //   return (

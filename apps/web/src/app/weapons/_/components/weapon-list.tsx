@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getWeapons } from '../api/getWeapons';
+import { getWeapons } from '../api/get-weapons';
 
 export async function WeaponList() {
   const { data: weapons } = await getWeapons();

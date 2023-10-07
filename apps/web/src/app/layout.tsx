@@ -7,7 +7,7 @@
 
 import './globals.css';
 import { Inter } from 'next/font/google';
-import { CounterProvider } from '@/context/CounterProvider';
+import { CounterProvider } from '@/context/counter-provider';
 import AppProvider from '@/providers/app';
 
 // フォントの設定

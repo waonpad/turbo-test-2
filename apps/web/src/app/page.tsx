@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Button } from 'ui';
-import Counter from './Counter';
+import Counter from './counter';
 
 export const metadata = {
   metadataBase: new URL('https://localhost.com:8080'),

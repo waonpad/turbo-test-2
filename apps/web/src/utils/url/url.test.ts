@@ -1,6 +1,6 @@
 import { host } from './host';
-import { hostApi } from './hostApi';
-import { backApi } from './backApi';
+import { hostApi } from './host-api';
+import { backApi } from './back-api';
 
 describe('url', () => {
   describe('host', () => {

@@ -1,5 +1,5 @@
-import './src/constants/clientEnv.mjs';
-import './src/constants/serverEnv.mjs';
+import './src/constants/client-env.mjs';
+import './src/constants/server-env.mjs';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

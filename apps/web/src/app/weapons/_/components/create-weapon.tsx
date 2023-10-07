@@ -1,8 +1,8 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { createWeapon } from '../api/createWeapon';
-import type { CreateWeapoForm } from '../api/createWeapon';
+import { createWeapon } from '../api/create-weapon';
+import type { CreateWeapoForm } from '../api/create-weapon';
 
 export function CreateWeapon() {
   const router = useRouter();

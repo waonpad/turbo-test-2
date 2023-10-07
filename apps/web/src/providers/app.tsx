@@ -1,5 +1,5 @@
 // import ThemeProvider from '@/providers/ThemeProvider';
-import { NextAuthProvider } from './NextAuthProvider';
+import { NextAuthProvider } from './next-auth-provider';
 
 type AppProviderProps = {
   children: React.ReactNode;

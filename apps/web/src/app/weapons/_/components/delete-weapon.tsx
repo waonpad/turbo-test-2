@@ -1,7 +1,7 @@
 'use client';
 import { Weapon } from 'database';
 import { useRouter } from 'next/navigation';
-import { deleteWeapon } from '../api/deleteWeapon';
+import { deleteWeapon } from '../api/delete-weapon';
 
 export function DeleteWeapon({ id }: { id: Weapon['id'] }) {
   const router = useRouter();
