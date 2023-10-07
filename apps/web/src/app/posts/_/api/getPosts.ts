@@ -1,9 +1,9 @@
 import { Post } from 'database';
 import { fetcher } from '@/services/fetcher';
-import { frontApi } from '@/utils/url';
+import { hostApi } from '@/utils/url/hostApi';
 
 export function getPosts() {
-  return fetcher<Post[]>(frontApi('posts'), {
+  return fetcher<Post[]>(hostApi('posts'), {
     cache: 'no-cache',
   });
 }

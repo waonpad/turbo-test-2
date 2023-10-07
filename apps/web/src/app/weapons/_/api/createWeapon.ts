@@ -1,11 +1,11 @@
 import { Weapon } from 'database';
 import { fetcher } from '@/services/fetcher';
-import { frontApi } from '@/utils/url';
+import { hostApi } from '@/utils/url/hostApi';
 
 export type CreateWeapoForm = Omit<Weapon, 'id'>;
 
 export function createWeapon(weapon: CreateWeapoForm) {
-  return fetcher<Weapon>(frontApi('weapons'), {
+  return fetcher<Weapon>(hostApi('weapons'), {
     method: 'POST',
     body: JSON.stringify(weapon),
   });

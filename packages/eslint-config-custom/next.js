@@ -35,6 +35,7 @@ module.exports = {
     '**/*.test.tsx',
     '**/*.spec.ts',
     '**/*.spec.tsx',
+    '**/*.mjs',
   ],
   rules: {
     '@next/next/no-html-link-for-pages': 'off',

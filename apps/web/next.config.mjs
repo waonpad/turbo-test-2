@@ -1,3 +1,6 @@
+import './src/constants/clientEnv.mjs';
+import './src/constants/serverEnv.mjs';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // modularizeImports: {
@@ -17,4 +20,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;
