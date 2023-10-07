@@ -50,13 +50,14 @@ body:
       placeholder: 画像のURLやモックアップのリンクを記入してください。
     validations:
       required: false
+
   - type: textarea
     id: impact
     attributes:
       label: 影響範囲
       placeholder: この機能が影響を及ぼす可能性がある既存の部分や機能について記述してください。
     validations:
-    required: false
+      required: false
     
   - type: textarea
     id: implementation-suggestions
@@ -64,4 +65,4 @@ body:
       label: 実装の提案
       placeholder: 技術的な観点からの機能の実装方法に関する提案や情報を記入してください。
     validations:
-    required: false
+      required: false
