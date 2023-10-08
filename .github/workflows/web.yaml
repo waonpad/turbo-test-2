@@ -20,6 +20,7 @@ on:
 env:
   # 環境変数を使うにはここで設定する
   # https://docs.github.com/ja/actions/learn-github-actions/variables
+  CI: 'true'
   NEST_API_URL: http://localhost:3000/
   NEXT_PUBLIC_HOST_URL: http://localhost:8080/
 
