@@ -33,7 +33,7 @@ export class WeaponsController {
 
   @Get()
   @HttpCode(200)
-  @UseGuards(NextAuthGuard)
+  // @UseGuards(NextAuthGuard)
   // @Api〇〇() でswagger用のタグをいろいろつけられる
   async getAllWeapons(): Promise<Weapon[]> {
     return this.weaponsService.getAllWeapons();

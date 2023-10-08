@@ -20,8 +20,18 @@ on:
 env:
   # 環境変数を使うにはここで設定する
   # https://docs.github.com/ja/actions/learn-github-actions/variables
+  # t3-envがCI環境でも動くため、ダミーでエラーを回避する
+  APP_ENV: production
+  DATABASE_URL: mysql://root:root@localhost:3306/mydb?schema=public
   NEST_API_URL: http://localhost:3000/
+  NEXT_PUBLIC_APP_NAME: NEXT APP
   NEXT_PUBLIC_HOST_URL: http://localhost:8080/
+  NEXTAUTH_SECRET: dummy
+  NEXTAUTH_URL: http://localhost:8080/
+  GITHUB_CLIENT_ID: dummy
+  GITHUB_CLIENT_SECRET: dummy
+  GOOGLE_CLIENT_ID: dummy
+  GOOGLE_CLIENT_SECRET: dummy
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
