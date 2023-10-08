@@ -15,16 +15,30 @@ services:
   #   extra_hosts:
   #     - 'host.docker.internal:host-gateway'
 
-  postgres:
-    image: postgres:15
+  # postgres:
+  #   image: postgres:15
+  #   environment:
+  #     - POSTGRES_DB=mydb
+  #     - POSTGRES_USER=test
+  #     - POSTGRES_PASSWORD=test
+  #   volumes:
+  #     - db_data_postgres:/var/lib/postgresql/data
+  #   ports:
+  #     - '5432:5432'
+
+  mysql:
+    image: mysql:latest
     environment:
-      - POSTGRES_DB=mydb
-      - POSTGRES_USER=test
-      - POSTGRES_PASSWORD=test
+      # root以外だと権限付与が面倒なので、rootでやる
+      - MYSQL_DATABASE=mydb
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=root
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - db_data_mysql:/var/lib/mysql
     ports:
-      - '5432:5432'
+      - '3306:3306'
 
 volumes:
-  db_data:
+  # db_data_postgres:
+  db_data_mysql:
