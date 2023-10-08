@@ -1,4 +1,8 @@
-require('dotenv').config();
+try {
+  require('dotenv').config();
+} catch (e) {
+  console.log('dotenv is not installed');
+}
 const env = process.env;
 
 const path = require('path');
