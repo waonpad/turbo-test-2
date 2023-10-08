@@ -1,8 +1,7 @@
 import { host } from './host';
 import { hostApi } from './host-api';
-import { backApi } from './back-api';
 
-describe('url', () => {
+describe('client url', () => {
   describe('host', () => {
     it('should return host url', () => {
       expect(host('')).toBe('http://localhost:8080/');
@@ -12,14 +11,6 @@ describe('url', () => {
   describe('hostApi', () => {
     it('should return front api url', () => {
       expect(hostApi('')).toBe('http://localhost:8080/api/');
-    });
-  });
-
-  describe('backApi', () => {
-    describe('nest', () => {
-      it('should return nest api url', () => {
-        expect(backApi.nest('')).toBe('http://localhost:3000/');
-      });
     });
   });
 });
