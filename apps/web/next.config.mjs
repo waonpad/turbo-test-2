@@ -1,9 +1,5 @@
-(async () => {
-  if (process.env.CI !== 'true') {
-    await import('./src/constants/client-env.mjs');
-    await import('./src/constants/server-env.mjs');
-  }
-})();
+import './src/constants/client-env.mjs';
+import './src/constants/server-env.mjs';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
