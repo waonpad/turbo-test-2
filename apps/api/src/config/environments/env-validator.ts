@@ -1,5 +1,5 @@
-import { IsEnum, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 import { plainToClass } from 'class-transformer';
+import { IsEnum, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 import { validateSync } from 'class-validator';
 
 enum AppEnvEnum {

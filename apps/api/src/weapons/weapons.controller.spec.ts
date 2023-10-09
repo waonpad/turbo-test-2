@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { PrismaService } from '../prisma/prisma.service';
 import { WeaponsController } from './weapons.controller';
 import { WeaponsService } from './weapons.service';
-import { PrismaService } from '../prisma/prisma.service';
 
 describe('WeaponsController', () => {
   let controller: WeaponsController;

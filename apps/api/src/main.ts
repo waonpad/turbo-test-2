@@ -1,10 +1,10 @@
+import { writeFileSync } from 'fs';
+import * as path from 'path';
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { dump } from 'js-yaml';
 import { AppModule } from './app.module';
 import { Env } from './config/environments/env.service';
-import * as path from 'path';
-import { writeFileSync } from 'fs';
-import { dump } from 'js-yaml';
 
 async function bootstrap() {
   // (1) アプリケーションのインスタンスを作成する
@@ -38,6 +38,7 @@ async function bootstrap() {
 
   // OpenAPI用のファイルを出力する
   const openApiOutputPath = path.resolve(process.cwd(), 'openapi.yml');
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   writeFileSync(openApiOutputPath, dump(document, {}));
 
   // (5) NestJSアプリケーションを指定したポートで起動する。ここでは3000

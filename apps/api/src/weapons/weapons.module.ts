@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
+import { AuthzModule } from 'src/authz/authz.module';
+import { PrismaService } from 'src/prisma/prisma.service';
 import { WeaponsController } from './weapons.controller';
 import { WeaponsService } from './weapons.service';
-import { PrismaService } from 'src/prisma/prisma.service';
-import { AuthzModule } from 'src/authz/authz.module';
 // import { LoggerModule } from 'src/logger/logger.module';
 // import { TypeOrmModule } from '@nestjs/typeorm';
 
