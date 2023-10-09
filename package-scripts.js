@@ -1,19 +1,21 @@
 const path = require('path');
 
+const root = (target) => path.resolve(__dirname, target);
+
 try {
-  require('dotenv').config({ path: path.resolve(__dirname, '.env') });
+  require('dotenv').config({ path: root('.env') });
 } catch (e) {
   console.log('dotenv is not installed');
 }
 const env = process.env;
 
-const apiPath = path.resolve(__dirname, 'apps/api');
-const webPath = path.resolve(__dirname, 'apps/web');
+const apiPath = root('apps/api');
+const webPath = root('apps/web');
 
-const ciApiPath = path.resolve(__dirname, 'out/apps/api');
-const ciWebPath = path.resolve(__dirname, 'out/apps/web');
+const ciApiPath = root('out/apps/api');
+const ciWebPath = root('out/apps/web');
 
-const databasePath = path.resolve(__dirname, 'packages/database');
+const databasePath = root('packages/database');
 
 // gcloud cliをインストールしておく
 // planet scale cli あると便利かも
@@ -27,10 +29,7 @@ module.exports = {
     prepare: {
       default: `nps prepare.env preapre.dependencies prepare.packages prepare.apps`,
       env: {
-        default: `node ${path.resolve(
-          __dirname,
-          'tool/copy-env.js' // .envファイルをコピーする自作スクリプト
-        )} --dir ./apps/* ./packages/*`, // 対象ディレクトリ
+        default: `node ${root('tool/copy-env.js')} --dir ./apps/* ./packages/*`, // 対象ディレクトリ
       },
       dependencies: `yarn install && npx turbo prune`,
       docker: `docker compose up -d`,
@@ -96,10 +95,7 @@ module.exports = {
     dev: 'docker compose up -d && npx turbo run dev --parallel --no-daemon',
     // git関連
     g: {
-      a: `node ${path.resolve(
-        __dirname,
-        'tool/easy-git-add.js' // git addを簡単にする自作スクリプト
-      )}`,
+      a: `node ${root('tool/git-easy-add.js')}`,
     },
     // gcloud関連
     gc: {
@@ -116,10 +112,7 @@ module.exports = {
         role: {
           add: `gcloud projects add-iam-policy-binding ${env.GC_PROJECT_ID} --member=serviceAccount:${env.GC_SERVICE_ACCOUNT} --role=roles/secretmanager.secretAccessor`,
         },
-        deploy: `node ${path.resolve(
-          __dirname,
-          'tool/gcloud-deploy-secret.js' // gcloudにsecretをデプロイする自作スクリプト
-        )}`,
+        deploy: `node ${root('tool/gcloud-deploy-secret.js')}`,
       },
       docker: {
         auth: `gcloud auth configure-docker`,
@@ -134,14 +127,8 @@ module.exports = {
         role: {
           add: `gcloud projects add-iam-policy-binding ${env.GC_PROJECT_ID} --member=serviceAccount:${env.GC_SERVICE_ACCOUNT} --role=roles/iam.serviceAccountUser`,
         },
-        deploy: `node ${path.resolve(
-          __dirname,
-          'tool/gcloud-deploy-run.js' // gcloudにcloudrunをデプロイする自作スクリプト
-        )}`,
-        url: `node ${path.resolve(
-          __dirname,
-          'tool/gcloud-get-run-url.js' // gcloudのcloudrunのURLを取得する自作スクリプト
-        )}`,
+        deploy: `node ${root('tool/gcloud-deploy-run.js')}`,
+        url: `node ${root('tool/gcloud-get-run-url.js')}`,
       },
     },
     pscale: {
