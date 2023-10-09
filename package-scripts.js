@@ -1,11 +1,11 @@
+const path = require('path');
+
 try {
-  require('dotenv').config();
+  require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 } catch (e) {
   console.log('dotenv is not installed');
 }
 const env = process.env;
-
-const path = require('path');
 
 const apiPath = path.resolve(__dirname, 'apps/api');
 const webPath = path.resolve(__dirname, 'apps/web');
@@ -15,8 +15,10 @@ const ciWebPath = path.resolve(__dirname, 'out/apps/web');
 
 const databasePath = path.resolve(__dirname, 'packages/database');
 
+// gcloud cliをインストールしておく
+// planet scale cli あると便利かも
+
 // 事前にグローバルインストール
-// planetscale cliを導入
 // npm install -g nps dredd git-cz
 
 module.exports = {
@@ -100,8 +102,6 @@ module.exports = {
       )}`,
     },
     // gcloud関連
-
-    // せっていちう
     gc: {
       auth: `gcloud auth login`,
       project: {
@@ -116,22 +116,32 @@ module.exports = {
         role: {
           add: `gcloud projects add-iam-policy-binding ${env.GC_PROJECT_ID} --member=serviceAccount:${env.GC_SERVICE_ACCOUNT} --role=roles/secretmanager.secretAccessor`,
         },
-        // apiのenvファイルから読み取って設定したいな・・・
-        // 10/09/03:09 ここまでやったよ
-
-        // ここからやる
+        deploy: `node ${path.resolve(
+          __dirname,
+          'tool/gcloud-deploy-secret.js' // gcloudにsecretをデプロイする自作スクリプト
+        )}`,
       },
       docker: {
         auth: `gcloud auth configure-docker`,
+        enable: `gcloud services enable containerregistry.googleapis.com`,
         role: {
           add: `gcloud projects add-iam-policy-binding ${env.GC_PROJECT_ID} --member=user:${env.GC_GOOGLE_ACCOUNT} --role=roles/storage.admin`,
         },
         tag: `docker tag ${env.GC_DOCKER_IMAGE} gcr.io/${env.GC_PROJECT_ID}/${env.GC_DOCKER_IMAGE}`,
         push: `docker push gcr.io/${env.GC_PROJECT_ID}/${env.GC_DOCKER_IMAGE}`,
       },
-      cloudrun: {
-        // いろんな設定入れられてないよ
-        deploy: `gcloud run deploy ${env.GC_CLOUD_RUN_SERVICE} --image=gcr.io/${env.GC_PROJECT_ID}/${env.GC_DOCKER_IMAGE} --region=asia-northeast1 --platform=managed --allow-unauthenticated`,
+      run: {
+        role: {
+          add: `gcloud projects add-iam-policy-binding ${env.GC_PROJECT_ID} --member=serviceAccount:${env.GC_SERVICE_ACCOUNT} --role=roles/iam.serviceAccountUser`,
+        },
+        deploy: `node ${path.resolve(
+          __dirname,
+          'tool/gcloud-deploy-run.js' // gcloudにcloudrunをデプロイする自作スクリプト
+        )}`,
+        url: `node ${path.resolve(
+          __dirname,
+          'tool/gcloud-get-run-url.js' // gcloudのcloudrunのURLを取得する自作スクリプト
+        )}`,
       },
     },
     pscale: {
