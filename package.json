@@ -13,7 +13,8 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "test": "nps test",
-    "prepare": "echo Please husky install"
+    "prepare": "echo Please husky install",
+    "dummy": "echo dummy"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.2",
