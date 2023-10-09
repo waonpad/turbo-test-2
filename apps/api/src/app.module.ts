@@ -2,13 +2,13 @@ import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { WeaponsModule } from './weapons/weapons.module';
-import { LoggerModule } from './logger/logger.module';
-import { LoggerInterceptor } from './interceptors/logging.inspector';
-import { EnvModule } from './config/environments/env.module';
-// import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthzModule } from './authz/authz.module';
+import { EnvModule } from './config/environments/env.module';
+import { LoggerInterceptor } from './interceptors/logging.inspector';
+import { LoggerModule } from './logger/logger.module';
+// import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserMiddleware } from './user/user.middleware';
+import { WeaponsModule } from './weapons/weapons.module';
 
 @Module({
   //importsは他のModuleでexportされたProviderを自身のModule内で使えるようにする

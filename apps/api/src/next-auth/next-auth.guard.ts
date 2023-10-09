@@ -6,13 +6,14 @@
 import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
 // import { decode } from 'next-auth/jwt';
 // import { Env } from 'src/config/environments/env.service';
+import { Request } from 'express';
 
 @Injectable()
 export class NextAuthGuard implements CanActivate {
   // constructor(private env: Env) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
-    const request = context.switchToHttp().getRequest();
+    const request: Request = context.switchToHttp().getRequest();
 
     // user.middleware.tsでreq.userにユーザー情報かnullをセットしているので、
     // それがあれば認証済みとみなす

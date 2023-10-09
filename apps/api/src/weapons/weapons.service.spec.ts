@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PrismaService } from '../prisma/prisma.service';
-import { WeaponsService } from './weapons.service';
 import { WeaponAttribute } from './constants/weapon-attribute.enum';
+import { WeaponsService } from './weapons.service';
 
 describe('WeaponsService', () => {
   let service: WeaponsService;

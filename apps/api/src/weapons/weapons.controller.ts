@@ -10,15 +10,15 @@ import {
   Req,
   UseGuards,
 } from '@nestjs/common';
-import { WeaponsService } from './weapons.service';
-import { CreateWeaponDto } from './dto/create-weapon.dto';
-import { UpdateWeaponDto } from './dto/update-weapon.dto';
 import { ApiParam, ApiTags } from '@nestjs/swagger';
 import { Weapon } from 'database';
-import { NextAuthGuard } from 'src/next-auth/next-auth.guard';
 import { Request } from 'express';
-import { User } from 'src/user/user.decorator';
+import { NextAuthGuard } from 'src/next-auth/next-auth.guard';
 import { AuthUser } from 'src/user/auth-user';
+import { User } from 'src/user/user.decorator';
+import { CreateWeaponDto } from './dto/create-weapon.dto';
+import { UpdateWeaponDto } from './dto/update-weapon.dto';
+import { WeaponsService } from './weapons.service';
 
 // typeormだとInsertResultとかを扱うらしい
 // https://zenn.dev/engineerhikaru/books/0a615c1248a2ea/viewer/6746bf

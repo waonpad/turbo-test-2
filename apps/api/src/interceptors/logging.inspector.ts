@@ -23,10 +23,10 @@ export class LoggerInterceptor implements NestInterceptor {
     return next
       .handle()
       .pipe(
-        catchError((err) => {
+        catchError((err: Error) => {
           // Exceptionのログを出力したい場合はここで実装;
           this.errorLogger.error(err.message, err, 'LoggerInterceptor', 'intercept');
-          return throwError(() => new Error(err));
+          return throwError(() => err);
         })
       )
       .pipe(tap());
