@@ -6,13 +6,6 @@ const axios = require('axios');
 // 実行部分の引数が無いと動かない
 // doneしないと終了しない
 
-// model Weapon {
-//   id          Int      @id @default(autoincrement())
-//   name        String
-//   attackPower Int
-//   attribute   String
-// }
-
 hooks.before('/weapons/{id} > DELETE > 200', async (transaction, done) => {
   const newWeapon = {
     name: 'new weapon',

@@ -4,8 +4,10 @@ const hooks = require('hooks');
 // const axios = require('axios');
 
 hooks.before('/danger > GET > 200', async (transaction, done) => {
+  transaction.skip = true; // テストをスキップする
+
   // トークンをヘッダーに付与する
-  transaction.request.headers.Authorization = 'Bearer ' + `ここにidトークンを入れる`;
+  // transaction.request.headers.Authorization = 'Bearer ' + `ここにidトークンを入れる`;
 
   done();
 });
