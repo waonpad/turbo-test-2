@@ -1,5 +1,4 @@
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
-import GitHubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 import prisma from '@/lib/prisma';
 import type { NextAuthOptions } from 'next-auth';
@@ -9,10 +8,6 @@ export const nextAuthOptions: NextAuthOptions = {
   session: { strategy: 'jwt' }, // adapterを使用する場合はstrategyがdatabaseになるが、明示的に指定すると強制できる
   adapter: PrismaAdapter(prisma),
   providers: [
-    GitHubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID!,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
-    }),
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
