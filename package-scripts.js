@@ -132,5 +132,8 @@ module.exports = {
         url: `node ${root('tool/gcloud-get-run-url.js')}`,
       },
     },
+    util: {
+      gensec: `node ${root('tool/gen-secret.js')}`,
+    },
   },
 };
