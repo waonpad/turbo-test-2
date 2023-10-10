@@ -5,7 +5,7 @@ DB作成時に接続情報を取得できるため, これをフロント, バ�
 
 ### 外部キーをサポートしていない
 
-PlanetScale は外部キーをサポートしていない
+PlanetScale は外部キーをサポートしていない  
 Prismaの場合, 以下のような設定が必要
 
 ```prisma:schema.prisma
