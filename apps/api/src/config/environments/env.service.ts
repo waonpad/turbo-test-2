@@ -25,18 +25,6 @@ export class Env {
     return this.configService.get('PORT');
   }
 
-  get Auth0Audience(): string {
-    return this.configService.get('AUTH0_AUDIENCE');
-  }
-
-  get Auth0IssuerUrl(): string {
-    return this.configService.get('AUTH0_ISSUER_URL');
-  }
-
-  get Auth0ClientSecret(): string {
-    return this.configService.get('AUTH0_CLIENT_SECRET');
-  }
-
   get NextAuthSecret(): string {
     return this.configService.get('NEXTAUTH_SECRET');
   }
