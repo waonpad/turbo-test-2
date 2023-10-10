@@ -1,6 +1,6 @@
-const { join, dirname, basename, resolve, normalize } = require("path");
-const glob = require("glob");
-const { copyFileSync, unlinkSync, existsSync } = require("fs");
+const { join, dirname, basename, resolve, normalize } = require('path');
+const glob = require('glob');
+const { copyFileSync, unlinkSync, existsSync } = require('fs');
 
 let copiedFilesHistory = [];
 let filesToCopy = [];
@@ -14,7 +14,7 @@ const prepareCopyFile = (from, to) => {
 };
 
 const shouldOverwrite = () => {
-  return process.argv.includes("--overwrite");
+  return process.argv.includes('--overwrite');
 };
 
 const executeCopy = () => {
@@ -39,7 +39,7 @@ const executeCopy = () => {
 };
 
 const rollback = () => {
-  console.log("Rolling back due to an error...");
+  console.log('Rolling back due to an error...');
   for (let i = copiedFilesHistory.length - 1; i >= 0; i--) {
     const filePath = copiedFilesHistory[i];
     if (existsSync(filePath)) {
@@ -68,30 +68,27 @@ const getFiles = (dir, pattern) => {
 const prepareCopyEnvFiles = (pattern) => {
   const dirs = getDirs(pattern);
   dirs.forEach((dir) => {
-    const envFiles = getFiles(dir, ".env.*example");
+    const envFiles = getFiles(dir, '.env.*example');
     envFiles.forEach((envFile) => {
-      const envDest = join(
-        dirname(envFile),
-        basename(envFile).replace(".example", "")
-      );
+      const envDest = join(dirname(envFile), basename(envFile).replace('.example', ''));
       prepareCopyFile(envFile, envDest);
     });
   });
 };
 
 const getInputDirs = () => {
-  const dirArgIndex = process.argv.indexOf("--dir");
+  const dirArgIndex = process.argv.indexOf('--dir');
   if (dirArgIndex === -1 || dirArgIndex === process.argv.length - 1) {
-    console.error("Please specify one or more directories with --dir");
+    console.error('Please specify one or more directories with --dir');
     process.exit(1);
   }
   return process.argv.slice(dirArgIndex + 1);
 };
 
 function main() {
-  console.log("========================================");
-  console.log("Preparing env files to copy");
-  console.log("========================================");
+  console.log('========================================');
+  console.log('Preparing env files to copy');
+  console.log('========================================');
 
   const inputDirs = getInputDirs();
 
@@ -101,18 +98,14 @@ function main() {
 
   console.log(filesToCopy.map((file) => file.from));
 
-  console.log("========================================");
-  console.log("Copying env files");
-  console.log("========================================");
-
   executeCopy();
 
-  console.log("========================================");
-  console.log("Copied files:");
+  console.log('========================================');
+  console.log('Copied files:');
   console.log(copiedFilesHistory);
-  console.log("Files already existing before copy:");
+  console.log('Files already existing before copy:');
   console.log(existingFilesBeforeCopy);
-  console.log("========================================");
+  console.log('========================================');
 }
 
 main();

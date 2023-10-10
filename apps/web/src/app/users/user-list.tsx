@@ -1,12 +1,9 @@
 import Link from 'next/link';
-import { User } from '../types';
+import { clientEnv } from '@/constants';
+import { PlaceHolderUser } from '@/types';
 
 const UserList = async () => {
-  // await new Promise((resolve) => setTimeout(resolve, 5000));
-  // const response = await fetch("https://jsonplaceholder.typicode.com/user");
-  // const response = await fetch("https://jsonplaceholder.typicode.com/users");
-  // const response = await fetch("http://localhost:3000/api");
-  const response = await fetch('http://localhost:8080/api?name=John', {
+  const response = await fetch(`${clientEnv.NEXT_PUBLIC_HOST_URL}api?name=John`, {
     // cacheしない設定
     // cacheされているかどうかは、ログのHIT/MISSで確認できる
     // cache: "no-store",
@@ -14,9 +11,10 @@ const UserList = async () => {
     // ビルドした際は、この指定した期間が経つと新しくhtmlが作成される
     // next: { revalidate: 5 },
   });
+
   if (!response.ok) throw new Error('Failed to fetch data');
-  const users: User[] = await response.json();
-  // console.log(users);
+  const users: PlaceHolderUser[] = await response.json();
+
   return (
     <ul>
       {users.map((user) => (

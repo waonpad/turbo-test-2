@@ -11,8 +11,6 @@ export class UserMiddleware implements NestMiddleware {
   constructor(private env: Env) {}
 
   async use(req: Request, _res: Response, next: NextFunction) {
-    // Validate token if provided
-
     const token = req.headers.authorization?.split(' ')[1];
 
     try {
@@ -21,20 +19,15 @@ export class UserMiddleware implements NestMiddleware {
         secret: this.env.NextAuthSecret,
       });
 
-      // console.log('decoded', decoded);
-
       if (decoded?.sub) {
-        // subはユーザーID
+        // sub is UserID
         req.user = decoded;
       }
 
       return next();
     } catch (err) {
-      console.log('err', err);
+      console.log('UserMiddleware error', err);
       return next();
     }
-
-    // このクラスはuserをセットするだけなので、認証はしない
-    // throw new UnauthorizedException('Credentials not provided or incorrect');
   }
 }

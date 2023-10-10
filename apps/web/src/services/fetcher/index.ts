@@ -6,11 +6,9 @@ import { HttpResponse } from './types';
 export function fetcher<T>(
   input: RequestInfo,
   init?: RequestInit
-  // validationSchema?: ZodObject<any> // API Routesの方でバリデーションしている。外部APIならここでもいいかも
+  // validationSchema?: ZodObject<any> // API Routesの方でバリデーションしている。APIに直接アクセスされる場合も考えて、そちらでやるのが良さそう？
 ) {
-  // APIエンドポイントにアクセスする前に事前にバリデーションをして、負荷を減らす設計
-  // これは工数が増えるので後からやる
-  // 取り敢えずAPIから投げられたバリデーションエラーを裁くところから
+  // APIエンドポイントにアクセスする前にクライアント側で事前にバリデーションをするならここ
   // try {
   //   if (validationSchema) {
   //     const data = JSON.parse(init?.body?.toString() || "");
@@ -22,7 +20,6 @@ export function fetcher<T>(
   return fetch(input, init)
     .then(transformResponse<T>())
     .catch((err) => {
-      // ネットワークエラーと、transformResponseでのエラーを一まとめにして投げる
       console.log('fetcher: err', err);
       throw err;
     });
@@ -73,6 +70,7 @@ export function transformResponse<T>() {
   };
 }
 
+// 触ってない
 // export function transformValidationErrors(
 //   error: unknown
 // ): Promise<ErrResponse> {
@@ -93,23 +91,4 @@ export function transformResponse<T>() {
 //     return Promise.resolve(response);
 //   }
 //   throw error;
-// }
-
-// export function fetcher<T>(
-//   input: RequestInfo,
-//   init?: RequestInit,
-//   validationSchema?: ZodObject<any>,
-//   throwErr = false
-// ) {
-//   try {
-//     if (validationSchema) {
-//       const data = JSON.parse(init?.body?.toString() || "");
-//       validationSchema.parse(data);
-//     }
-//   } catch (err) {
-//     return transformValidationErrors(err, throwErr);
-//   }
-//   return fetch(input, init)
-//     .then(transformResponse<T>(throwErr))
-//     .catch((err) => transformError<T>(err));
 // }

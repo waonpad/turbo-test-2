@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { hostApi } from '@/utils/url/host-api';
 
 export default function File() {
   const [uploadFile, setUploadFile] = useState<File | null>(null);
@@ -19,7 +20,7 @@ export default function File() {
     const formData = new FormData();
     formData.append('file', uploadFile);
 
-    const res = await fetch('http://localhost:3000/api/upload', {
+    const res = await fetch(hostApi('upload'), {
       method: 'POST',
       body: formData,
     });

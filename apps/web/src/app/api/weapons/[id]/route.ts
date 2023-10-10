@@ -7,7 +7,6 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
   const token = await getToken({ req, raw: true });
 
   const res = await fetch(backApi.nest(`weapons/${params.id}`), {
-    // 必要ないが、つけておく
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -19,7 +18,7 @@ export async function GET(req: NextRequest, { params }: { params: { id: string }
 }
 
 export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
-  const reqJson = await req.json(); // このようにしてbodyを受け取れる
+  const reqJson = await req.json();
 
   const token = await getToken({ req, raw: true });
 
@@ -29,7 +28,7 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(reqJson), // JSON.stringifyしないとバックエンドで受け取れない
+    body: JSON.stringify(reqJson),
   });
 
   const resJson = await res.json();

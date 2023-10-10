@@ -2,7 +2,6 @@
 
 import { signIn } from 'next-auth/react';
 
-// ログインボタン
 export const LoginButton = () => {
   return (
     <button

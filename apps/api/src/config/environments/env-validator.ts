@@ -1,23 +1,9 @@
 import { plainToClass } from 'class-transformer';
 import { IsEnum, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 import { validateSync } from 'class-validator';
+import { AppEnvEnum } from './constants/app-env.enum';
+import { HostEnum } from './constants/host.enum';
 
-enum AppEnvEnum {
-  Development = 'development',
-  Production = 'production',
-  Test = 'test',
-}
-
-enum HostEnum {
-  Localhost = 'localhost',
-  All = '0.0.0.0',
-}
-
-/**
- * ①
- * バリデーションしたい環境変数がある場合はここに記載してください。
- * バリデーションに失敗するとアプリケーションは起動しません。
- */
 export class EnvValidator {
   @IsEnum(AppEnvEnum)
   APP_ENV: AppEnvEnum;
@@ -50,7 +36,6 @@ export class EnvValidator {
 }
 
 /**
- * ②
  * @param config バリデーション対象の Record<string, any>。今回は .env.development.local と 環境変数が合体したもの
  * @returns バリデーション済の Record<string, any>
  */

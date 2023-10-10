@@ -1,17 +1,16 @@
 generator client {
   provider = "prisma-client-js"
-  // https://tech-blog.s-yoshiki.com/entry/297
+  // デプロイ先のマシンに合わせてbinaryTargetsを変更する
   binaryTargets = ["native", "debian-openssl-1.1.x", "debian-openssl-3.0.x"]
 }
 
 datasource db {
-  // provider = "sqlite"
-  // provider = "postgresql"
-  // planetscaleの場合はmysql
+  // mysqlの場合、長いデータには@db.Textをつける
   provider = "mysql"
   url      = env("DATABASE_URL")
   // relationMode: デフォルトはforeignKeys
   // planetscaleの場合はprisma
+  // モデルの@@indexもplanetscaleのために必要
   relationMode = "prisma"
 }
 
@@ -61,7 +60,6 @@ model User {
   active        Boolean   @default(true)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
-  // posts         Post[]
 }
 
 model VerificationToken {
@@ -71,18 +69,6 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
-
-// model Post {
-//   id        Int      @id @default(autoincrement())
-//   title     String
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-//   category  String
-//   content   String
-//   author    String
-//   user      User     @relation(fields: [author], references: [id], onDelete: Cascade)
-// }
-
 
 model Post {
   id       Int    @id @default(autoincrement())

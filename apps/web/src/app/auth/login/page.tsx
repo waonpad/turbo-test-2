@@ -5,47 +5,6 @@ import { useSession } from 'next-auth/react';
 import { LoginButton } from '../_/components/login-button';
 import { LogoutButton } from '../_/components/logout-button';
 
-// export default async function Page() {
-//   return (
-//     <main
-//       style={{
-//         display: "flex",
-//         justifyContent: "center",
-//         alignItems: "center",
-//         height: "70vh",
-//       }}
-//     >
-//       <div>
-//         <LoginButton />
-//         <LogoutButton />
-//       </div>
-//     </main>
-//   );
-// }
-
-// サーバーコンポーネントでのログイン状態の取得
-// export default async function Page() {
-//   const session = await getServerSession(options);
-//   const user = session?.user; // ログインしていなければnullになる。
-
-//   return (
-//     <main
-//       style={{
-//         display: "flex",
-//         justifyContent: "center",
-//         alignItems: "center",
-//         height: "70vh",
-//       }}
-//     >
-//       <div>
-//         <div>{`${JSON.stringify(user)}`}</div>
-//         {user ? <div>Logged in</div> : <div>Not logged in</div>}
-//         {user ? <LogoutButton /> : <LoginButton />}
-//       </div>
-//     </main>
-//   );
-// }
-
 // クライアントコンポーネントでのログイン状態の取得
 export default function ClientPage() {
   const {
@@ -64,16 +23,7 @@ export default function ClientPage() {
   const user = session?.user;
 
   return (
-    <main
-      // style={{
-      //   display: 'flex',
-      //   justifyContent: 'center',
-      //   alignItems: 'center',
-      //   height: '70vh',
-      // }}
-      // muiを使わなくしたので上のをtailwindcssで書き換え
-      className="flex h-3/4 items-center justify-center"
-    >
+    <main className="flex h-3/4 items-center justify-center">
       <div>
         <div>{`${JSON.stringify(user)}`}</div>
         {user ? <div>Logged in</div> : <div>Not logged in</div>}
@@ -82,3 +32,19 @@ export default function ClientPage() {
     </main>
   );
 }
+
+// サーバーコンポーネントでのログイン状態の取得
+// export default async function Page() {
+//   const session = await getServerSession(options);
+//   const user = session?.user; // ログインしていなければnullになる。
+
+//   return (
+//     <main>
+//       <div>
+//         <div>{`${JSON.stringify(user)}`}</div>
+//         {user ? <div>Logged in</div> : <div>Not logged in</div>}
+//         {user ? <LogoutButton /> : <LoginButton />}
+//       </div>
+//     </main>
+//   );
+// }

@@ -39,7 +39,6 @@ export class LoggerService implements LoggerServiceOrigin {
     });
 
     // envでログをコンソール出力するか決定する
-    // コンソールへの出力を追加しないと開発がしづらいので注意
     if (!this.env.isProduction()) {
       this.logger.add(
         new transports.Console({
@@ -53,15 +52,6 @@ export class LoggerService implements LoggerServiceOrigin {
   log(message: string): void {
     this.logger.info(message);
   }
-
-  // // デフォルトのLoggerServiceを継承しているため、log・error・warnは実装しないといけない
-  // log(message: string, service: string, funcName: string): void {
-  //   this.logger.info(message, {
-  //     service: service,
-  //     funcName: funcName,
-  //     notDefaultMeta: 'デフォルトにないの情報も出力可能です！',
-  //   });
-  // }
 
   error(message: string, err: Error, service: string, funcName: string): void {
     this.logger.error(message, err, {
