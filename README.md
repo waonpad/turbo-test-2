@@ -48,3 +48,5 @@
 ### [開発する](./docs/DEV.md)
 
 ### [Git操作](./docs/GIT.md)
+
+### [デプロイ](./docs/DEPLOY.md)
