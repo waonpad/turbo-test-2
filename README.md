@@ -41,70 +41,10 @@
 - `.vscode`: チーム開発で環境を素早く合わせるためのあれこれ
 - `tool`: こまごましたスクリプト置き場
 
-## セットアップ
+## ドキュメント一覧
 
-### 前提条件
+### [セットアップ](./docs/SETUP.md)
 
-yarn, nps, Dredd, [git-cz](https://www.npmjs.com/package//git-cz) をインストール
+### [開発する](./docs/DEV.md)
 
-```
-npm i -g yarn nps dredd git-cz
-```
-
-💡 Docker, Docker Compose のインストールを確認
-
-### 準備する
-
-以下のコマンドで,
-
-- (`.env.*example`)を全てコピーし, 設定可能にする
-- 認証に使うsecretを生成し、`api`, `web`の環境変数に設定
-- パッケージのインストール
-- DBコンテナの起動と初回マイグレーション
-
-が実行される
-
-```
-nps prepare
-```
-
-#### OAuth認証の準備
-
-Google CloudでOAuth認証をセットアップする
-
-1. [ココ](https://console.cloud.google.com/apis/credentials)にアクセス
-2. `+ CREATE CREDENTIALS` をクリック
-3. `OAuth client ID` を選択
-4. `Application type` に `Web application` を選択
-5. `Authorized JavaScript origins` に `http://localhost:8080` を追加
-6. `Authorized redirect URIs` に `http://localhost:8080/api/auth/callback/google` を追加
-7. `CREATE` をクリックし, 作成が完了するとClient IDとClient secretが表示される
-8. それぞれ `<rootDir>/apps/web/.env` の対応する行に設定
-
-### 開発を始める
-
-以下のコマンドで,
-
-- DBコンテナの起動
-- 全てのワークスペースの開発サーバーの起動
-
-が実行される
-
-```
-nps dev
-```
-
-デフォルト設定で開かれるポートと対応するアプリは以下
-
-- http://localhost:3000: `api` (NestJS)
-- http://localhost:8080: `web` (Next.js)
-- http://localhost:6006: `workshop` (Storybook)
-- http://localhost:3306: MySql
-
-更に, Prisma Studio を起動すれば, DBに簡単にアクセスできる
-
-```
-nps prisma.studio
-```
-
-- http://localhost:5555: Prisma Studio
+### [Git操作](./docs/GIT.md)
