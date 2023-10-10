@@ -6,10 +6,12 @@ const genSecret = async (length) => {
 };
 
 const main = async () => {
-  const length = process.argv[2] || 32;
+  const length = process.argv[2] || 16;
 
   const secret = await genSecret(Number(length));
   console.log(secret);
 };
 
 main();
+
+exports.genSecret = genSecret;

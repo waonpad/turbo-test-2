@@ -17,15 +17,11 @@ const ciWebPath = root('out/apps/web');
 
 const databasePath = root('packages/database');
 
-// 事前にグローバルインストール
-// gcloud cli
-// npm install -g nps dredd git-cz
-
 module.exports = {
   scripts: {
     // 事前準備
     prepare: {
-      default: `nps prepare.env preapre.deps prepare.packages prepare.apps`,
+      default: `nps prepare.env util.upnxsec preapre.deps prepare.packages prepare.apps`,
       env: {
         default: `node ${root('tool/copy-env.js')} --dir ./ ./apps/* ./packages/*`,
       },
@@ -134,6 +130,7 @@ module.exports = {
     },
     util: {
       gensec: `node ${root('tool/gen-secret.js')}`,
+      upnxsec: `node ${root('tool/update-nextauth-secret.js')}`,
     },
   },
 };
