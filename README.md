@@ -17,7 +17,7 @@
   - ✅ GitHub Actions (自動テスト)
   - ✅ Issue, PR, Commitメッセージのテンプレート
   - ✅ Git Hooks (自動整形, 自動テスト, 自動インストール)
-- ✅ DatabaseをDockerコンテナで利用し、ローカルを汚さない
+- ✅ DBをDockerコンテナで利用
 - ✅ [Node Package Scripts](https://github.com/sezna/nps#readme) によるコマンド簡潔化
 
 ## 中身
