@@ -70,7 +70,7 @@ nps prepare
 
 #### OAuth認証の準備
 
-Google CloudでOAuth認証用のセットアップをします
+Google CloudでOAuth認証をセットアップする
 
 1. [ココ](https://console.cloud.google.com/apis/credentials)にアクセス
 2. `+ CREATE CREDENTIALS` をクリック
@@ -101,7 +101,7 @@ nps dev
 - http://localhost:6006: `workshop` (Storybook)
 - http://localhost:3306: MySql
 
-更に, Prisma Studio を起動すれば、DBに簡単にアクセスできる
+更に, Prisma Studio を起動すれば, DBに簡単にアクセスできる
 
 ```
 nps prisma.studio
