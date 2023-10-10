@@ -1,17 +1,8 @@
 import { getPost } from '../_/api/getPost';
 
-// テスト用コンポーネント
-
-// export default async function Page() {
-// const { data: post, err } = await getPost(1);
 export default async function Page({ params }: { params: { id: string } }) {
-  const { data: post, err } = await getPost(Number(params.id));
+  const { data: post } = await getPost(Number(params.id));
 
-  if (err) {
-    return <div>Error: {JSON.stringify(err)}</div>;
-  }
-
-  // これでいいのか？？？
   if (!post) {
     return <div>Not Found</div>;
   }

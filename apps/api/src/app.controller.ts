@@ -1,7 +1,7 @@
 import { Controller, Get, Req, UseGuards } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
 import { Request } from 'express';
 import { AppService } from './app.service';
+import { NextAuthGuard } from './next-auth/next-auth.guard';
 import { AuthUser } from './user/auth-user';
 
 @Controller()
@@ -13,11 +13,9 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @UseGuards(AuthGuard('jwt')) // 認証を試してみる // これはauth0のjwtでやってみた
+  @UseGuards(NextAuthGuard)
   @Get('danger')
   getDanger(@Req() req: Request): AuthUser {
-    console.log(req.user);
-
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     return req.user;
   }

@@ -1,4 +1,4 @@
-import { type User } from '@/app/types';
+import { type PlaceHolderUser } from '@/types';
 import type { Metadata } from 'next';
 
 async function getUser(id: string) {
@@ -7,13 +7,13 @@ async function getUser(id: string) {
 }
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const user: User = await getUser(params.id);
+  const user: PlaceHolderUser = await getUser(params.id);
   return { title: user.name };
 }
 
 export async function generateStaticParams() {
   const response = await fetch('https://jsonplaceholder.typicode.com/users');
-  const users: User[] = await response.json();
+  const users: PlaceHolderUser[] = await response.json();
 
   // 静的なhtmlを作成するために、idの配列を返す
   // sliceして範囲を指定すると、その範囲だけのhtmlが作成される
@@ -23,7 +23,7 @@ export async function generateStaticParams() {
 }
 
 const Page = async ({ params }: { params: { id: string } }) => {
-  const user: User = await getUser(params.id);
+  const user: PlaceHolderUser = await getUser(params.id);
 
   return (
     <div className="m-4">

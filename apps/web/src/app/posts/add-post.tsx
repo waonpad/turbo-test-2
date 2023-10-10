@@ -23,7 +23,6 @@ export default function AddPost() {
     setContent('');
 
     router.refresh();
-    // await queryClient.invalidateQueries(["posts"]);
   };
 
   return (

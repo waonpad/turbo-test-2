@@ -1,9 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
-/**
- * アプリケーションモジュールで利用する設定値は、ここから取得します。
- */
 @Injectable()
 export class Env {
   constructor(private configService: ConfigService) {}
@@ -27,10 +24,6 @@ export class Env {
   get Port(): number {
     return this.configService.get('PORT');
   }
-
-  // get DatabaseUrl(): string {
-  //   return this.configService.get('DATABASE_URL');
-  // }
 
   get Auth0Audience(): string {
     return this.configService.get('AUTH0_AUDIENCE');

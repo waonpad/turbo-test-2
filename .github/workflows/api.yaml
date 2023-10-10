@@ -30,7 +30,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [18.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -55,7 +55,6 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - run: yarn global add turbo
-      - run: npx nps prepare.ci.database # 追加 # 一回消してみる
       - run: npx nps prepare.ci.api
       - run: npx nps build.ci.api # databaseも勝手にbuildされる
       - run: npx nps test.ci.api

@@ -36,6 +36,7 @@ export function UpdateWeapon(weapon: Weapon) {
           onChange={(e) => setWeapon({ ...weaponForm, attackPower: Number(e.target.value) })}
           className="border"
           required
+          type="number"
         />
       </div>
       <div>

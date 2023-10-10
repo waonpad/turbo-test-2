@@ -1,17 +1,11 @@
 import { Module } from '@nestjs/common';
-import { AuthzModule } from 'src/authz/authz.module';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { WeaponsController } from './weapons.controller';
 import { WeaponsService } from './weapons.service';
-// import { LoggerModule } from 'src/logger/logger.module';
-// import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  // imports: [LoggerModule], いらないらしい
-  imports: [AuthzModule], // 認証を試してみる
-  // typeorm
-  // imports: [TypeOrmModule.forFeature([Weapon])],
+  imports: [],
   controllers: [WeaponsController],
-  providers: [WeaponsService, PrismaService], // PrismaServiceを利用するのでここに追加
+  providers: [WeaponsService, PrismaService],
 })
 export class WeaponsModule {}

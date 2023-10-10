@@ -20,12 +20,6 @@ import { CreateWeaponDto } from './dto/create-weapon.dto';
 import { UpdateWeaponDto } from './dto/update-weapon.dto';
 import { WeaponsService } from './weapons.service';
 
-// typeormだとInsertResultとかを扱うらしい
-// https://zenn.dev/engineerhikaru/books/0a615c1248a2ea/viewer/6746bf
-
-// ステータスコード
-// https://qiita.com/ms2geki/items/c2d3b3f38aabb00052a8
-
 @Controller('weapons')
 @ApiTags('weapons') // swagger用のタグを追加
 export class WeaponsController {

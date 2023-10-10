@@ -1,5 +1,5 @@
 import { ImageResponse } from 'next/server';
-import type { User } from '@/app/types';
+import type { PlaceHolderUser } from '@/types';
 
 export const size = {
   width: 1200,
@@ -8,9 +8,9 @@ export const size = {
 export const contentType = 'image/png';
 
 export default async function Image({ params }: { params: { id: string } }) {
-  const user: User = await fetch(`https://jsonplaceholder.typicode.com/users/${params.id}`).then(
-    (res) => res.json()
-  );
+  const user: PlaceHolderUser = await fetch(
+    `https://jsonplaceholder.typicode.com/users/${params.id}`
+  ).then((res) => res.json());
 
   return new ImageResponse(
     (

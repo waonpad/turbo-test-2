@@ -8,7 +8,7 @@ export function CreateWeapon() {
   const router = useRouter();
 
   const weaponFormDefault: CreateWeapoForm = {
-    name: 'てｓｔ',
+    name: 'test-weapon',
     attackPower: 0,
     attribute: 'sword',
   };
@@ -17,9 +17,6 @@ export function CreateWeapon() {
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
-
-    console.log('ふぉーむ');
-    console.log(weapon);
 
     createWeapon(weapon);
 
@@ -46,6 +43,7 @@ export function CreateWeapon() {
           onChange={(e) => setWeapon({ ...weapon, attackPower: Number(e.target.value) })}
           className="border"
           required
+          type="number"
         />
       </div>
       <div>
