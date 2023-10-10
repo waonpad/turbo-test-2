@@ -25,7 +25,7 @@ module.exports = {
       env: {
         default: `node ${root('tool/copy-env.js')} --dir ./ ./apps/* ./packages/*`,
       },
-      deps: `yarn install --frozen-lockfile`,
+      deps: `yarn install --frozen-lockfile && yarn husky install`,
       docker: `docker compose up -d`,
       packages: `nps prepare.database`,
       database: `docker compose up -d && nps prisma.generate prisma.migrate.dev prisma.build`,
