@@ -31,8 +31,9 @@ services:
     environment:
       # root以外だと権限付与が面倒なので、rootでやる
       - MYSQL_DATABASE=mydb
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=root
+      # rootで利用する場合これらの設定は不要
+      # - MYSQL_USER=root
+      # - MYSQL_PASSWORD=root
       - MYSQL_ROOT_PASSWORD=root
     volumes:
       - db_data_mysql:/var/lib/mysql
